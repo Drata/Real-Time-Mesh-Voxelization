@@ -54,9 +54,11 @@ Shader::Shader(const std::string& vertexShader, const std::string& fragmentShade
 	m_program = glCreateProgram();
 	glAttachShader(m_program, vs);
 	glAttachShader(m_program, fs);
+	glAttachShader(m_program, gs);
 	glLinkProgram(m_program);
 	glDeleteShader(vs);
 	glDeleteShader(fs);
+	glDeleteShader(gs);
 	glGetProgramiv(m_program, GL_LINK_STATUS, &retCode);
 	if (retCode == GL_FALSE) {
 		glGetProgramInfoLog(m_program, sizeof(errorLog), nullptr, errorLog);
